@@ -1,0 +1,36 @@
+import threading
+tornillos = int(input("Ingresa la cantidad de tornillos a comprar: \n"))
+tuercas = int(input("Ingresa el número de tuercas a comprar: \n"))
+arandelas = int(input("Ingresa el número de arandelas a comprar: \n"))
+
+
+
+def retraso():
+    print("Verificando pedido...")
+    cont = 0
+    while cont < 5:
+        cont += 1
+        print('...')
+
+
+hilo1 = threading.Thread(target=retraso())
+hilo1.start()
+
+while((tornillos > tuercas) or (tornillos == 0 and tuercas == 0 and arandelas == 0) ):
+    print("Compruebe la orden de nuevo.")
+    print("Número de tornillos: \n",tornillos)
+    print("Número de tuercas: \n",tuercas)
+    print("Número de arandelas: \n",arandelas)
+    tornillos = int(input("Ingresa la cantidad de tornillos a comprar: \n"))
+    tuercas = int(input("Ingresa el número de tuercas a comprar: \n"))
+    arandelas = int(input("Ingresa el número de arandelas a comprar: \n"))
+    retraso()
+
+print("Número de tornillos: \n",tornillos)
+print("Número de tuercas: \n",tuercas)
+print("Número de arandelas: \n",arandelas)
+print("Costo Total: ",(tornillos * 5) + (tuercas * 3) + (arandelas * 1))
+
+
+
+
